@@ -3,12 +3,12 @@ import discord
 import requests
 from discord.ext import tasks
 
-# --- Secrets ---
+# --- Secrets (set these in Replit Secrets panel) ---
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
 DISCORD_CHANNEL_ID = int(os.environ.get("DISCORD_CHANNEL_ID"))
 TWITCH_CLIENT_ID = os.environ.get("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = os.environ.get("TWITCH_CLIENT_SECRET")
-TWITCH_CHANNEL = "shanntidotes"
+TWITCH_CHANNEL = "shanntidotes"  # Twitch username
 
 # --- Discord setup ---
 intents = discord.Intents.default()
@@ -82,7 +82,7 @@ async def twitch_check():
     elif not stream and last_live_status:
         last_live_status = False
         # Optional: announce stream ended
-        await DISCORD_CHANNEL.send(f"{TWITCH_CHANNEL} has ended the stream.")
+        # await DISCORD_CHANNEL.send(f"{TWITCH_CHANNEL} has ended the stream.")
 
 @client.event
 async def on_ready():
