@@ -1,0 +1,14 @@
+services:
+  shnncryptbot:
+    build: ./DiscordBot
+    container_name: shnncrypt-bot
+    restart: always
+    env_file: ./DiscordBot/.env
+    volumes:
+      - ./DiscordBot/relay_config.yml:/app/relay_config.yml:ro
+
+  twitchbot:
+    build: ./TwitchBot
+    container_name: twitch-bot
+    restart: always
+    env_file: ./TwitchBot/.env

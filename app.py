@@ -2,13 +2,16 @@ import os
 import discord
 import requests
 from discord.ext import tasks
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- Secrets (set these in Replit Secrets panel) ---
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
 DISCORD_CHANNEL_ID = int(os.environ.get("DISCORD_CHANNEL_ID"))
 TWITCH_CLIENT_ID = os.environ.get("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = os.environ.get("TWITCH_CLIENT_SECRET")
-TWITCH_CHANNEL = "shanntidotes"  # Twitch username
+TWITCH_CHANNEL = "shanntidotes"  # Twitch usernamexX
+#TWITCH_CHANNEL = "MxnkeyLoL"  # Twitch usernamexX
 
 # --- Discord setup ---
 intents = discord.Intents.default()
@@ -59,7 +62,16 @@ async def twitch_check():
     stream = check_twitch_live()
 
     if not DISCORD_CHANNEL:
-        return  # Channel not ready yet
+        print("Discord channel not ready yet")
+        return
+
+    if stream and not last_live_status:
+        last_live_status = True
+        print(f"{TWITCH_CHANNEL} is live!")
+        ...
+    elif not stream and last_live_status:
+        last_live_status = False
+        print(f"{TWITCH_CHANNEL} went offline")
 
     if stream and not last_live_status:
         last_live_status = True
@@ -77,7 +89,7 @@ async def twitch_check():
         embed.set_thumbnail(url=thumbnail)
         embed.add_field(name="Watch here:", value=url, inline=False)
 
-        await DISCORD_CHANNEL.send(content="@everyone 🎮", embed=embed)
+        await DISCORD_CHANNEL.send(content="Tara LIVE! @everyone", embed=embed)
 
     elif not stream and last_live_status:
         last_live_status = False
