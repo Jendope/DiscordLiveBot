@@ -80,7 +80,7 @@ async def twitch_check():
         embed.set_thumbnail(url=thumbnail)
         embed.add_field(name="Watch here:", value=url, inline=False)
 
-        await DISCORD_CHANNEL.send(content="@Tara LIVE! everyone 🎮", embed=embed)
+        await DISCORD_CHANNEL.send(content="Tara LIVE! @everyone 🎮", embed=embed)
         print(f"Announced live stream: {title}")
 
     elif not stream and last_live_status:
