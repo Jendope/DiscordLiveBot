@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install dependencies for Twitch + Discord bot
+# Install dependencies
 RUN pip install --no-cache-dir discord.py requests python-dotenv
 
 COPY . .
