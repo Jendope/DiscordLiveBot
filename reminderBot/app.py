@@ -92,6 +92,47 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    content = message.content.lower().strip()
+
+    # --- Funny triggers ---
+    if "bleu" in content:
+        await message.reply("ang pogi mo <@433607960493555722>", mention_author=True)
+        return
+
+    if content == "talaga ba?":
+        await message.reply("oo, sobrang pogi", mention_author=True)
+        return
+
+    if "shann" in content or "shnncrypt" in content or "404287153213014038" in content:
+        await message.reply("Bading", mention_author=True)
+        return
+
+    if content in ["tanginamo", "tangina mo"]:
+        await message.reply("tangina mo rin", mention_author=True)
+        return
+
+    if content in ["putanginamo", "putangina mo"]:
+        await message.reply("putangina mo rin", mention_author=True)
+        return
+
+    if content in ["ulol", "ulol ka"]:
+        await message.reply("ulol ka rin", mention_author=True)
+        return
+
+    if content == "gago":
+        await message.reply("gago ka rin", mention_author=True)
+        return
+
+    if content in ["panget", "panget ka"]:
+        await message.reply("panget ka rin", mention_author=True)
+        return
+
+    if content in ["bading", "gay", "g4y"]:
+        await message.reply("puro ka kabadingan!!!>", mention_author=True)
+        return
+
+    # --- Command logic ---
     if not message.content.startswith("!"):
         return
 
@@ -155,6 +196,20 @@ async def on_message(message):
             f"Reminder channel ID: {REMINDER_CHANNEL_ID}"
         )
         return
+
+# @client.event
+# async def on_stage_instance_create(stage_instance):
+#     # IDs for you and Shann
+#     allowed_hosts = {433607960493555722, 404287153213014038}
+
+#     # Check if the stage is in the channel you care about
+#     if stage_instance.channel.id == 1420602941815128074:
+#         # Get the guild member who created the stage
+#         creator = stage_instance.guild.get_member(stage_instance.creator_id)
+#         if creator and creator.id in allowed_hosts:
+#             await stage_instance.channel.send(
+#                 f"@everyone {creator.display_name} is live: {stage_instance.topic}\nPasok sa <#1420602941815128074>"
+#             )
 
 if not DISCORD_TOKEN:
     print("DISCORD_TOKEN not set. Exiting.")
