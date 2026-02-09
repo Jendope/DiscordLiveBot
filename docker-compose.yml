@@ -4,3 +4,9 @@ services:
     container_name: twitch-bot
     restart: always
     env_file: ./.env
+
+  reminderbot:
+    build: ./reminderbot
+    container_name: reminder-bot
+    restart: always
+    env_file: ./reminderbot/.env
