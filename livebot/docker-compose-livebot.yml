@@ -1,0 +1,6 @@
+services:
+  livebot:
+    build: .
+    container_name: live-bot
+    restart: always
+    env_file: ./.env

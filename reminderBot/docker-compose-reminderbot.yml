@@ -1,0 +1,8 @@
+services:
+  reminderbot:
+    build: .
+    container_name: reminder-bot
+    restart: always
+    env_file: ./.env
+    volumes:
+      - ./reminder_state.json:/app/reminder_state.json
